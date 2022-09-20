@@ -9,6 +9,7 @@ import FormLabel from '@mui/material/FormLabel';
 import { useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import { labels } from '../lib/labels';
+import Image from 'next/image';
 
 export default function Index() {
   const [name, setName] = useState('');
@@ -81,6 +82,9 @@ export default function Index() {
       <form onSubmit={handleFormSubmit}>
         <Container style={{ width: 'min(500px,100%)' }}>
           <Stack spacing={4} mt={4}>
+            <div style={{ height: '100px', position: 'relative' }}>
+              <Image src='/logo.png' alt='logo' layout='fill' />
+            </div>
             <Typography variant='h4'> Personal Information </Typography>
             <TextField
               required
