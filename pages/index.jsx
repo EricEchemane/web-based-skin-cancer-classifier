@@ -199,7 +199,7 @@ export default function Index() {
             Description: {prediction.type.description}
           </Typography>
           <Typography>
-            Recommendation: {""}
+            Recommendation: {prediction.type.recommendation}
           </Typography>
         </Stack>
       </Container>}
