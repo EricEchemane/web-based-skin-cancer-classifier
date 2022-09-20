@@ -19,6 +19,7 @@ export default function Index() {
   const [imageUrl, setImageUrl] = useState();
   const [file, setFile] = useState();
   const [prediction, setPrediction] = useState();
+  const [loading, setLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState('personal-info');
 
@@ -51,6 +52,7 @@ export default function Index() {
   };
 
   const predict = async () => {
+    setLoading(true);
     const img = document.createElement('img');
     img.width = 28;
     img.height = 28;
@@ -69,8 +71,8 @@ export default function Index() {
     const index = results.findIndex((r) => r === max);
     const prediction = { confidence: max, type: labels[index] };
     setPrediction(prediction);
-    console.log(prediction);
     setCurrentPage('result');
+    setLoading(false);
   };
 
   return <>
@@ -158,11 +160,11 @@ export default function Index() {
           </Button>
           <Button
             onClick={classify}
-            disabled={imageUrl == null}
+            disabled={imageUrl == null || loading}
             variant="contained"
             component="label"
           >
-            Classify
+            {loading ? 'Loading...' : 'Classify'}
           </Button>
         </Stack>
       </Container>
