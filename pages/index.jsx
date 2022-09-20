@@ -122,6 +122,7 @@ export default function Index() {
               variant="outlined" />
 
             <Button
+              style={{ color: 'white' }}
               type="submit"
               fullWidth
               size='large'
@@ -159,6 +160,7 @@ export default function Index() {
             />
           </Button>
           <Button
+            style={{ color: 'white' }}
             onClick={classify}
             disabled={imageUrl == null || loading}
             variant="contained"
@@ -171,7 +173,7 @@ export default function Index() {
     }
     {currentPage === 'result' &&
       <Container style={{ width: 'min(500px,100%)' }}>
-        <Stack spacing={4} my={18}>
+        <Stack spacing={4} my={10}>
           <Typography variant='h4'>
             Personal Information
           </Typography>
