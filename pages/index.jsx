@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Container from '@mui/material/Container';
-import { Button, Paper, Stack, TextField, Typography } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Stack, TextField, Typography } from '@mui/material';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -21,6 +21,8 @@ export default function Index() {
   const [file, setFile] = useState();
   const [prediction, setPrediction] = useState();
   const [loading, setLoading] = useState(false);
+
+  const [termsAndConditionIsIopen, setTermsAndConditionIsIopen] = useState(true);
 
   const [currentPage, setCurrentPage] = useState('personal-info');
 
@@ -78,6 +80,34 @@ export default function Index() {
 
   return <>
     <Head> <title> ASCADES </title> </Head>
+
+    <div>
+      <Dialog
+        maxWidth="sm"
+        open={termsAndConditionIsIopen}
+        onClose={() => { }}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Terms and Conditions
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Dito niyo ilalagay yung terms and condition
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            fullWidth
+            variant="outlined"
+            onClick={() => setTermsAndConditionIsIopen(false)} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+
     {currentPage === 'personal-info' &&
       <form onSubmit={handleFormSubmit}>
         <Container style={{ width: 'min(500px,100%)' }}>
