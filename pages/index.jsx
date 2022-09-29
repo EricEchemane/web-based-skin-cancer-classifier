@@ -63,9 +63,6 @@ export default function Index() {
 
     const model = await tf.loadLayersModel('/tfjs/model.json');
     const imageTensor = tf.browser.fromPixels(img)
-      .expandDims(0)
-      .expandDims(-1)
-      .div(255.0)
       .reshape([-1, 28, 28, 3]);
 
     const pred = model.predict(imageTensor);
@@ -73,6 +70,7 @@ export default function Index() {
     const max = Math.max(...results);
     const index = results.findIndex((r) => r === max);
     const prediction = { confidence: max, type: labels[index] };
+    console.log(results);
     setPrediction(prediction);
     setCurrentPage('result');
     setLoading(false);
@@ -93,7 +91,7 @@ export default function Index() {
           Terms and Conditions
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText id="alert-dialog-description" component="div">
             <Typography variant='button'>
               Last updated: Sep 28, 2022
             </Typography>
@@ -211,8 +209,7 @@ Researchers recommend to use a camera with high resolution for best result.
             onClick={classify}
             disabled={imageUrl == null || loading}
             variant="contained"
-            component="label"
-          >
+            component="label">
             {loading ? 'Loading...' : 'Classify'}
           </Button>
         </Stack>
@@ -245,15 +242,12 @@ Researchers recommend to use a camera with high resolution for best result.
           <Typography>
             Description: {prediction.type.description}
           </Typography>
-          <Typography>
-            Recommendation: {prediction.type.recommendation}
-            <details>
-              <summary>
-                See Details
-              </summary>
-              The recommendation of an Expert (Dermatologist) is to see the nearest doctor to receive the proper cancer treatment or medication. In addition, users who do not prefer undergoing any operation look for a DermaTech. DermaTech is an expert when it comes to treating and healing a skin with the use of herbal cream remedies.
-            </details>
-          </Typography>
+          <details>
+            <summary>
+              Recommendation: {prediction.type.recommendation}
+            </summary>
+            The recommendation of an Expert (Dermatologist) is to see the nearest doctor to receive the proper cancer treatment or medication. In addition, users who do not prefer undergoing any operation look for a DermaTech. DermaTech is an expert when it comes to treating and healing a skin with the use of herbal cream remedies.
+          </details>
         </Stack>
       </Container>}
   </>;
