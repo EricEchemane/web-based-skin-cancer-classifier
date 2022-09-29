@@ -94,17 +94,20 @@ export default function Index() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {`
-Terms and Conditions
-Last updated: Sep 28, 2022
+            <Typography variant='button'>
+              Last updated: Sep 28, 2022
+            </Typography>
+            <Typography>
+              {`
 Please read these Terms and Conditions carefully before using the ASCADES operated by us.
 Your access to and use of the services is conditioned on your acceptance of compliance with these terms. These terms apply to all users who access or use the service.
 By accessing or using the service, you agree to the bond by these terms. If you disagree with any part of the terms, then you may not access the service. 
 All information users input will not be collected by us. 
 Policy
 The service was to detect skin cancer and other skin problems that will not be covered.
-Researchers recommend to use a camera with high resolution for best result            
+Researchers recommend to use a camera with high resolution for best result.            
             `}
+            </Typography>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -244,6 +247,12 @@ Researchers recommend to use a camera with high resolution for best result
           </Typography>
           <Typography>
             Recommendation: {prediction.type.recommendation}
+            <details>
+              <summary>
+                See Details
+              </summary>
+              The recommendation of an Expert (Dermatologist) is to see the nearest doctor to receive the proper cancer treatment or medication. In addition, users who do not prefer undergoing any operation look for a DermaTech. DermaTech is an expert when it comes to treating and healing a skin with the use of herbal cream remedies.
+            </details>
           </Typography>
         </Stack>
       </Container>}
