@@ -22,7 +22,7 @@ export default function Index() {
   const [prediction, setPrediction] = useState();
   const [loading, setLoading] = useState(false);
 
-  const [termsAndConditionIsIopen, setTermsAndConditionIsIopen] = useState(true);
+  const [termsAndConditionIsIopen, setTermsAndConditionIsIopen] = useState(false);
 
   const [currentPage, setCurrentPage] = useState('personal-info');
 
