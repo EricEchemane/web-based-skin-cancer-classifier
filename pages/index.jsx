@@ -22,7 +22,7 @@ export default function Index() {
   const [prediction, setPrediction] = useState();
   const [loading, setLoading] = useState(false);
 
-  const [termsAndConditionIsIopen, setTermsAndConditionIsIopen] = useState(false);
+  const [termsAndConditionIsIopen, setTermsAndConditionIsIopen] = useState(true);
 
   const [currentPage, setCurrentPage] = useState('personal-info');
 
@@ -94,7 +94,17 @@ export default function Index() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Dito niyo ilalagay yung terms and condition
+            {`
+Terms and Conditions
+Last updated: Sep 28, 2022
+Please read these Terms and Conditions carefully before using the ASCADES operated by us.
+Your access to and use of the services is conditioned on your acceptance of compliance with these terms. These terms apply to all users who access or use the service.
+By accessing or using the service, you agree to the bond by these terms. If you disagree with any part of the terms, then you may not access the service. 
+All information users input will not be collected by us. 
+Policy
+The service was to detect skin cancer and other skin problems that will not be covered.
+Researchers recommend to use a camera with high resolution for best result            
+            `}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
